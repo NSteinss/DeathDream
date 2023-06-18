@@ -1,24 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../controller/register_controller.dart';
+import 'package:flutter/material.dart'; // Importa el paquete de Flutter para material de diseño.
+import 'package:get/get.dart'; // Importa el paquete 'get' para el manejo de estados.
+
+import '../../controller/register_controller.dart'; // Importa el controlador de registro.
 
 // ignore: camel_case_types, must_be_immutable
 class registerPage extends StatelessWidget {
-  RegisterController con = Get.put(RegisterController());
+  // Clase de la página de registro, extiende de StatelessWidget.
+  RegisterController con = Get.put(
+      RegisterController()); // Crea una instancia del controlador de registro.
 
-  registerPage({super.key});
+  registerPage({super.key}); // Constructor de la página de registro.
+
   @override
   Widget build(BuildContext context) {
+    // Método build para construir la interfaz de la página.
     /////////////////////////////////////////////////////////////////////////////////////////////
     return Scaffold(
+      // Retorna un Scaffold, que proporciona la estructura básica para una pantalla con AppBar y otras funcionalidades.
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
+          // Permite hacer scroll si el contenido excede el tamaño de la pantalla.
           child: Container(
         constraints: BoxConstraints(
+          // Restricciones de tamaño para el contenedor principal.
           maxWidth: MediaQuery.of(context).size.width,
           maxHeight: MediaQuery.of(context).size.height,
         ),
         decoration: const BoxDecoration(
+          // Decoración del contenedor con un gradiente de colores.
           gradient: LinearGradient(
             colors: [
               Color.fromRGBO(33, 6, 130, 1),
@@ -29,13 +38,16 @@ class registerPage extends StatelessWidget {
           ),
         ),
         child: Column(
+          // Columna que contiene los elementos de la página.
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _background(),
+            _background(), // Llama al método privado _background para mostrar el fondo.
             Expanded(
+              // Expande el espacio restante en la columna.
               flex: 6,
-              child: _background2(),
+              child:
+                  _background2(), // Llama al método privado _background2 para mostrar el contenido principal.
             )
           ],
         ),
@@ -44,6 +56,7 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _background() {
+    // Método privado para mostrar el fondo de la página.
     return const Expanded(
       flex: 2,
       child: Padding(
@@ -80,6 +93,7 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _background2() {
+    // Método privado para mostrar el contenido principal de la página.
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -91,41 +105,42 @@ class registerPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          _profilePhoto(),
+          _profilePhoto(), // Llama al método privado _profilePhoto para mostrar la foto de perfil.
           const SizedBox(
             height: 20.0,
           ),
-          _name(),
+          _name(), // Llama al método privado _name para mostrar el campo de nombre.
           const SizedBox(
             height: 20.0,
           ),
-          _lastName(),
+          _lastName(), // Llama al método privado _lastName para mostrar el campo de apellido.
           const SizedBox(
             height: 20.0,
           ),
-          _phone(),
+          _phone(), // Llama al método privado _phone para mostrar el campo de teléfono.
           const SizedBox(
             height: 20.0,
           ),
-          _email(),
+          _email(), // Llama al método privado _email para mostrar el campo de correo electrónico.
           const SizedBox(
             height: 20.0,
           ),
-          _password(),
+          _password(), // Llama al método privado _password para mostrar el campo de contraseña.
           const SizedBox(
             height: 20.0,
           ),
-          _buttonSignUp(),
+          _buttonSignUp(), // Llama al método privado _buttonSignUp para mostrar el botón de registro.
           const SizedBox(
             height: 30.0,
           ),
-          _doHaveAccount(),
+          _doHaveAccount(), // Llama al método privado _doHaveAccount para mostrar el texto de "¿Ya tienes una cuenta?".
         ]),
       ),
     );
   }
 
   Widget _profilePhoto() {
+    // Método privado para mostrar la foto de perfil.
     return GestureDetector(
       onTap: () {},
       child: Container(
@@ -147,8 +162,10 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _phone() {
+    // Método privado para mostrar el campo de teléfono.
     return TextField(
-      controller: con.phoneController,
+      controller: con
+          .phoneController, // Asigna el controlador de teléfono al TextField.
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
         filled: true,
@@ -167,8 +184,10 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _name() {
+    // Método privado para mostrar el campo de nombre.
     return TextField(
-      controller: con.nameController,
+      controller:
+          con.nameController, // Asigna el controlador de nombre al TextField.
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         filled: true,
@@ -187,8 +206,10 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _lastName() {
+    // Método privado para mostrar el campo de apellido.
     return TextField(
-      controller: con.lastNameController,
+      controller: con
+          .lastNameController, // Asigna el controlador de apellido al TextField.
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         filled: true,
@@ -207,8 +228,10 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _email() {
+    // Método privado para mostrar el campo de correo electrónico.
     return TextField(
-      controller: con.emailController,
+      controller: con
+          .emailController, // Asigna el controlador de correo electrónico al TextField.
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         filled: true,
@@ -227,8 +250,10 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _password() {
+    // Método privado para mostrar el campo de contraseña.
     return TextField(
-      controller: con.passwordController,
+      controller: con
+          .passwordController, // Asigna el controlador de contraseña al TextField.
       obscureText: true,
       decoration: InputDecoration(
         filled: true,
@@ -247,10 +272,12 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _buttonSignUp() {
+    // Método privado para mostrar el botón de registro.
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => con.register(),
+        onPressed: () =>
+            con.register(), // Asigna la función de registro al botón.
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -271,6 +298,7 @@ class registerPage extends StatelessWidget {
   }
 
   Widget _doHaveAccount() {
+    // Método privado para mostrar el texto de "¿Ya tienes una cuenta?".
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -286,7 +314,8 @@ class registerPage extends StatelessWidget {
           width: 5.0,
         ),
         GestureDetector(
-          onTap: () => con.goToLogin(),
+          onTap: () => con
+              .goToLogin(), // Asigna la función para ir a la página de inicio de sesión al texto.
           child: Text(
             "Inicia Sesión",
             textAlign: TextAlign.end,
@@ -302,5 +331,3 @@ class registerPage extends StatelessWidget {
     );
   }
 }
-  /////////////////////
-
